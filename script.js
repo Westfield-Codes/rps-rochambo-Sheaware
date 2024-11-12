@@ -1,42 +1,33 @@
- main();
 function main(){
+    let uChoice = 0;
     let cChoice = 0;
-    let pChoice = 0;
-     while (pChoice == cChoice){
-        pChoice = userTurn();
-        cChoice = cpuTurn();
-        if (pChoice == cChoice){
-            alert("We both chose chose"+pChoice);
-        }
-     }
-     findWinner(pChoice,cChoice);
+    while (uChoice == cChoice){
+        uChoice = userTurn();
+        cChoice = cpuTurn();       
+        if (uChoice == cChoice){
+            alert("We both chose " + cChoice);
+        }                                                                                         
+    }
+    findWinner(uChoice, cChoice);
 }
-
 
 function userTurn(){
-// Prompt user to enter R, P, S
-    let userEntry = prompt("What's your play? (r)ock, (p)aper, or (s)cissors?");
-    if (userEntry != "r" && userEntry !=  "p" && userEntry != "s") {
-    alert("Bad Input");
-    userTurn(); 
+    let choice = "";
+    while (choice != "r" && choice != "p" && choice != "s"){
+        choice = prompt("Enter r, p or s.");
+        if (choice == "r" || choice == "p"  || choice == "s") return choice;
+        else userTurn();
+    }
 }
-    return userEntry;
-}
-
 
 function cpuTurn(){
-    var cpuChoices = ["r", "p", "s"];
-    var cpuRandom = cpuChoices[Math.floor(Math.random() * cpuChoices.length)];
-    alert(cpuRandom);
-    return cpuRandom;
-    findWinner();
+    let choice = Math.floor(Math.random()*2);
+    if (choice == 0) return "r";
+    else if (choice == 1) return "p";
+    else return "s";
 }
 
-function findWinner(pChoice,cChoice) {
-    if (cpuChoice == "r" && userEntry == "s") alert("CPU Wins!");
-    if (cpuChoice == "s" && userEntry == "r");
-    else alert("Testing Code");
-
-} 
-
-
+function findWinner(u, c){
+    let winner = "I";
+    alert("You picked " + u + " and I picked " + c + ".  " + winner + " won that round.");
+}
